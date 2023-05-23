@@ -1,0 +1,8 @@
+
+/****1point***/
+non global mudule
+const fs = require("fs");
+console.log("code step by step");
+fs.writeFileSync("hello.text", "code step by step");
+//fs, buffer, http these are core module(basis feature already making in  programimg lang.)
+//global module  are those module no need to import.
