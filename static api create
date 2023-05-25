@@ -1,0 +1,21 @@
+1 st file- data.js
+const data=[
+{
+    name:'ravikant singh',email:'ravikant@',contact:'9000'},
+{name:'Sam',email:'sam@.com'},
+{name:'peter',email:'perter@test.com'}
+
+
+]
+module.exports=data;
+2 nd file- index.js
+const http = require('http');
+const data =require('./data');
+http.createSetver((req, resp) => {
+    resp.writeHead(200, { "content-type": "applicationjson" });
+    resp.write(
+      JSON.stringify({ name: "anil sidhu", email: "ravikant@gmail.com" })
+    );
+    resp.end();
+  })
+  .listen(5000);
