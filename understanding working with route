@@ -1,0 +1,16 @@
+const express = require("express");
+const path = require("path");
+const app = express();
+const port = 4000;
+
+app.get("/contact",(req,res)=>{
+    res.send("hello worl");
+});
+
+app.get("/about", (req, res) => {
+  res.send("heelo");
+});
+
+app.listen(port, () => {
+  console.log("server is working on port: ${port}");
+});
