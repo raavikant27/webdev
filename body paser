@@ -1,0 +1,116 @@
+const express = require("express");
+const bodyparser = require("body-parser");
+
+let app = express(); //configur our app
+//we have got our app
+
+app.use(bodyparser.urlencoded({ extended: false }));
+//extended , we create a object. in documentation mention like this .
+// in app.use(middleware)
+//this is our need body
+
+app.use("/login", express.static(__dirname + "/public")); //this middlewer for express when somebody is login route adte that we not configure to res, we configure to static file, letter on see how to serve on template on it.in expres file we just combine their path
+
+//after that below we serve simple route
+app.get("/", (req, res) => {
+  res.send("Hello, my application!");
+});
+//mention were should u go mention it
+app.post("/login", (req, res) => {
+  console.log(req.body.email); //req.body is whole geyganting object, puri body
+  //do some database process
+  res.redirect("/"); //
+});
+
+app.listen(3000, () => console.log("Server is running at port 3000"));
+
+index.html
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="custom.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form action="/login" method="POST" class="form-signin">
+        <img class="mb-4" src="https://learncodeonline.in/logo-public/LCO-logo-white.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name='email' id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+</body>
+
+</html>
+
+index.css
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #30336b;
+  color: #fff;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
