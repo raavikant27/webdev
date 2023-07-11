@@ -1,0 +1,12 @@
+const express = require("express");
+const app = express();
+
+const port = 3000;
+
+//routes
+//we right url nd call back funtion
+app.get("/heloo", (req, res) => {
+  res.send("task manager");
+});
+
+app.listen(port, console.log("server is listening on port ${port}..."));
